@@ -1,0 +1,309 @@
+Test:
+
+1)Explain the concept of Type casting with the help o example.   (5 Marks)
+ANS:
+TYPE CASTING MEAN CHANGING THE VALUE OF DATA TYPE TO ONE TO ANOTHER DATA TYPE . IT CAN BE DONE BY IMPLICITY and EXPLICITY( MANUALLY IN PROGRAMMING CODE)
+LIKE IF WE HAVE A FLOAT VALUE AND WE WANT OUTPUT IN INT VALUE THAT IN THESE CAS WE CAN USE TYPE CASTING
+IMPLICITY EX:-
+int_num = 5;
+float_num = 2.5;
+result = int_num * float_num;
+EXPLICITY EX:-
+
+function sum(){
+var n1= document.getElementById('num1');
+var n2= document.getElementById('num2');
+ let sum = n1+n2;
+console.log(sum);
+
+}
+<form>
+<div>
+	Enter First Number <input type="text" id="num1" />
+	Enter Second Number <input type="text" id="num2" />
+	<input type="button" onclick="sum()" value="sum" />
+	</form>
+	<h1 id="ans"></h1>
+</div>
+</form>
+
+FOR EXAQMPLE IF WE EXECUTE THE ABOVE CODE IT WILL GIVE AS THE RESULT AS CONCATE OF n1 and n2 NOT THE ADDITON OF  THOSE 2 BECAUSE N1 AND N2 IS IN THE FORM OF STRING SO IT WILL GONNA CONCATE THE 2 STRING AND PRINT THE RESULT.
+ AFTER TYPE CASTNG THE VARIABLE THE variable IS NOW CONVERT INTO NUMBER .
+
+SYNTAX:
+let var_name = Number(document.getElementById('Id_name').value);
+
+
+var n1= Number(document.getElementById('num1').value);
+var n2= Number(document.getElementById('num2').value);
+
+
+
+
+2)Explain the cpncept of OOPS By using a program which will combine each concept of OOPS (15 Marks)
+ANS:
+
+//class as book
+class Book {
+    private String title;
+    private String author;
+
+    public Book(String title, String author) {
+        this.title = title;
+        this.author = author;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+}
+
+//class as library
+class Library {
+    private Book[] books;
+
+    public Library(Book[] books) {
+        this.books = books;
+    }
+
+    public void displayBooks() {
+        System.out.println("Books in the library:");
+        for (Book book : books) {
+            System.out.println(book.getTitle() + " by " + book.getAuthor());
+        }
+    }
+}
+
+
+
+public class bookStore{
+
+     public static void main(String []args){
+        Book book1 = new Book("the monk who sold his farari", "Robin SHarma");
+        Book book2 = new Book("poor dad rich dad", "Robert T. Kiyosaki and Sharon Lechter.");
+        //creat an array of book
+        Book[] books = { book1, book2};
+//create a library object and [ass the book array
+        Library library = new Library(books);
+
+        library.displayBooks();
+     }
+}
+
+
+
+
+
+3)Write a program to perform the following operation with the help of packages    (20 Marks)
+  a:Armstrong NO
+  b:Check entered character is palindrom or not
+  c:Wether the given no is prime or not
+  d:Average, smallest, greatest by using array 
+
+ANS:
+A)
+code:
+
+import java.util.Scanner;  
+
+public class armstrong {
+
+  public static void armstrong(String[] args) {
+
+      Scanner sc = new Scanner(System.in);  
+       System.out.print("Enter a number : ");  
+       int n = sc.nextInt();
+        int r,sum=0,num;
+        
+        num=n;
+			do
+			{
+				r=n%10;
+				sum= sum+ (r*r*r);
+				n=n/10;
+			}
+			while(n>0);
+			if(sum==num)
+			{
+				      System.out.println(n + " is armstrong.");
+
+			}
+			else
+			{
+				      System.out.println(n + " is not armstrong.");
+			}
+  }
+}
+
+B.
+CODE:
+import java.util.Scanner;  
+
+public class PalindromeExample{  
+ public static void main(String args[]){  
+    Scanner sc = new Scanner(System.in);  
+       System.out.print("Enter a number : ");  
+       int n = sc.nextInt();
+  int r,sum=0,temp;    
+  temp=n;    
+  while(n>0){    
+   r=n%10;   
+   sum=(sum*10)+r;    
+   n=n/10;    
+  }    
+  if(temp==sum)    
+   System.out.println("palindrome number ");    
+  else    
+   System.out.println("not palindrome");    
+}  
+}  
+
+
+  c :Wether the given no is prime or not
+code:
+import java.util.Scanner;  
+
+public class primeNo {
+
+  public static void primeNo(String[] args) {
+
+      Scanner sc = new Scanner(System.in);  
+       System.out.print("Enter a number : ");  
+       int n = sc.nextInt();
+        boolean isprime = true;
+       for(int i=2;i<=n/2;i++){
+       if(n%i==0){
+           isprime=false;
+           break;
+       }
+       }
+       if(isprime){
+      System.out.println(n + " is a prime number.");
+       }else{
+         System.out.println(n + " is not a prime number.");
+       }
+  }
+}
+
+d
+code:
+
+import java.util.*;
+
+class Smallest_Largest
+{
+public static void main(String args[])
+{
+int large,small,i;
+int a[] = new int[]{1, 2, 3, 4, 5};
+int n = a.length;
+large=small=a[0];
+for(i=1;i<n;++i)
+{
+if(a[i]>large)
+large=a[i];
+
+if(a[i]<small)
+small=a[i];
+}
+
+System.out.println(“The smallest element is ” + small );
+System.out.println(“The largest element is ” + large );
+}
+}
+
+
+4)Write a program to store the Employee data in the database by using Servlet and JDBC (10 Marks)
+ANS:
+// SERVLET
+
+
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.util.Scanner;
+
+/**
+ * Servlet implementation class insert_data
+ */
+public class insert_data extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public insert_data() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		try {
+			
+			String Emp_name;
+			String Emp_Id;
+			String Phone_no;
+			String Position;
+			Scanner sc = new Scanner (System.in);
+			System.out.print("enter Employee name:");
+			Emp_name = sc.next();
+			System.out.print("enter Employee ID:");
+			Emp_Id = sc.next();
+			System.out.print("enter Employee Phone_number:");
+			Phone_no = sc.next();
+			System.out.print("enter Employee POsition:");
+			Position = sc.next();
+			
+			String qry = "insert into emp_table values (?,?,?,?)";
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/employee_table", "root", "root");
+			PreparedStatement ps = cn.prepareStatement(qry);
+			ps.setString(1, Emp_name);
+			ps.setString(2, Emp_Id);
+			ps.setString(3, Phone_no);
+			ps.setString(4, Position);
+			int counts = ps.executeUpdate();
+			if(counts >0) {
+                System.out.println("Data Inserted");
+			}else{
+                System.out.println("Error");
+            }
+            cn.close();	
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}
+
+//DATABASE
+
+create database employee_table;
+use employee_table;
+create table emp_table(Emp_name varchar(50), Emp_Id varchar(50), Phone_no varchar(50),Position varchar(50));
+
